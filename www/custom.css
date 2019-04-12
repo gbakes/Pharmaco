@@ -1,0 +1,201 @@
+.main-header .logo {
+        font-family: "Poppins", Poppins, "Poppins", serif;
+        font-weight: light;
+        font-size: 14px;
+      }
+.box.box-solid.box-primary.box-header {
+  color:#E9EEF4;
+  background:#E9EEF4
+                    } 
+
+
+.box.box-solid.box-primary{
+border-bottom-color:#666666;
+border-left-color:#666666;
+border-right-color:#666666;
+border-top-color:#666666;
+}
+
+.skin-blue .main-header .logo {
+                              background-color: #d90916;
+                              }
+                              
+                              /* logo when hovered */
+                              
+.skin-blue .main-header .logo:hover {
+                              background-color: #d90916;
+                              }
+                              
+                              /* navbar (rest of the header) */
+.skin-blue .main-header .navbar {
+                              background-color: #d90916;
+    background-image: -moz-linear-gradient(left, #d90916 0%, #d90916 100%);
+    background-image: -webkit-linear-gradient(left, #d90916 0%, #d90916 100%);
+    background-image: linear-gradient(to right, #d90916 0%, #d90916 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d90916', endColorstr='#FFE53589', GradientType=1);
+                              }        
+                              
+                              /* main sidebar */
+/*.skin-blue .main-sidebar {
+                              background-color: #C1BAAE
+                              }
+                              
+                              /* active selected tab in the sidebarmenu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu .active a{
+                              background-color: #d90916;
+                              font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+      
+                              }
+                              
+                              /* other links in the sidebarmenu */
+.skin-blue .main-sidebar .sidebar .sidebar-menu a{
+                              font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              }
+                              
+                              /* other links in the sidebarmenu when hovered */
+/*.skin-blue .main-sidebar .sidebar .sidebar-menu a:hover{
+                              background-color: #FB054B;
+                              }
+                              /* toggle button when hovered  */                    
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+                             background-color: #d90916;
+                             border-color: #d90916;
+                              }
+
+.skin-blue .main-sidebar .nav-tabs-custom .nav-tabs li.active:hover a, .nav-tabs-custom .nav-tabs li.active a {
+     background-color: #d90916;
+     border-color: #d90916;
+}
+
+.skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li:hover>a {
+    color: #fff;
+    background: #1e282c;
+    border-left-color: #d90916;
+}
+
+
+
+.box-body {
+                              font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              background-color: #E9EEF4;
+                              /*color: #E9EEF4;*/
+}
+
+.box-header {
+                              font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              background-color: #d90916;
+                              color: #d90916;
+}   
+.box.box-solid.box-primary.box-header {
+    font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              background-color: #d90916;
+                              color: #d90916;
+    
+}
+
+.box-header .box-title{
+  font-family: "Poppins", Poppins, "Poppins", serif;
+        font-weight: normal;
+        font-size: 18px;
+        color: #ffffff;
+}
+
+h2 {
+        font-family: "Poppins", Poppins, "Poppins", serif;
+        font-weight: normal;
+        font-size: 18px;
+      }
+text {
+        font-family: "Poppins", Poppins, "Poppins", serif;
+        font-weight: normal;
+        font-size: 18px;
+      }      
+.skin-blue.small-box {    
+                font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              background-color: #d90916;
+                              color: #d90916;
+  
+}
+
+
+  
+.bg-aqua-blue {    
+                font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              background-color: #d90916;
+                              color: #d90916;
+  
+}
+
+.bg-yellow {  
+     background-color: #006EB9;
+    background-image: -moz-linear-gradient(left, #4F4F4F 0%, #4F4F4F 100%);
+    background-image: -webkit-linear-gradient(left, #4F4F4F 0%, #4F4F4F 100%);
+    background-image: linear-gradient(to right, #4F4F4F 0%, #4F4F4F 100%);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d90916', endColorstr='#FFE53589', GradientType=1);
+   
+} 
+
+.bg-red {  
+  color: #d90916;
+     background-color: #d90916;
+   
+} 
+.bg-light-blue {  
+  color: #d90916;
+     background-color: #d90916;
+   
+} 
+.overview-text{    
+                font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+  
+}
+
+.projections{    
+     font-family: "Poppins", Poppins, "Poppins", serif;
+                              font-weight: lighter;
+                              font-size: 12px;
+                              background-color: #d90916;
+                              color: #d90916;
+  
+}
+.col-sm-4{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.box.box-success{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+/*
+.checkbox-bs-danger input[type="checkbox"]:checked + label::before, .checkbox-bs-danger input[type="radio"]:checked + label::before {
+    background-color: #d90916;
+    border-color: #ffffff;
+}
+*/
+
