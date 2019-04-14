@@ -1,6 +1,7 @@
-<p align="center">
+<p align="left">
   <img src="/pharmaco2.jpg" width="200">
 </p>
+
 # The Pharmaco Project
 
 This the first draft of a mockup created to follow an online training engagement that rolled out company-wide to a large corporation of over 6000 employees.
@@ -14,8 +15,8 @@ During the training engagement, training documents, media and tests were complet
 
 The real data cannot be shown for privacy reasons and the data in the app is fake however the schema remains the same:
 
-* **id: ** the unique employee id
-* **program: ** the program the employee was a part of
+* *id: * the unique employee id
+* <b>program: </b> the program the employee was a part of
 * **stages 1:5 ** the relative completion level of each stage by the participant as a percentage
 * **Training: ** the start date of the training
 * **NPS: ** the NPS of the training
