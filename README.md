@@ -15,13 +15,13 @@ During the training engagement, training documents, media and tests were complet
 
 The real data cannot be shown for privacy reasons and the data in the app is fake however the schema remains the same:
 
-* *id: * the unique employee id
-* <b>program: </b> the program the employee was a part of
+* <b>ID: </b> the unique employee id
+* <b>Program: </b> the program the employee was a part of
 * **stages 1:5 ** the relative completion level of each stage by the participant as a percentage
-* **Training: ** the start date of the training
-* **NPS: ** the NPS of the training
-* **ToDo: ** commitment/todo made or not (1 = yes, 0 = no)
-* **Goal: ** the goal that that the commitment was aligned to
-* **rating: ** the star rating the employees gave to the online training content
-* **country: ** the country where the training took places
-* **region: ** the region the country is from.
+* <b>Training: </b> the start date of the training
+* <b>NPS: </b> the NPS of the training
+* <b>ToDo: </b> commitment/todo made or not (1 = yes, 0 = no)
+* <b>Goal: </b> the goal that that the commitment was aligned to
+* <b>Rating: </b> the star rating the employees gave to the online training content
+* <b>Country: </b> the country where the training took places
+* <b>Region: </b> the region the country is from.
