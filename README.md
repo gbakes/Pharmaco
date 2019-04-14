@@ -17,7 +17,7 @@ The real data cannot be shown for privacy reasons and the data in the app is fak
 
 * <b>ID: </b> the unique employee id
 * <b>Program: </b> the program the employee was a part of
-* **stages 1:5 ** the relative completion level of each stage by the participant as a percentage
+* <b>Stages 1:5 </b> the relative completion level of each stage by the participant as a percentage
 * <b>Training: </b> the start date of the training
 * <b>NPS: </b> the NPS of the training
 * <b>ToDo: </b> commitment/todo made or not (1 = yes, 0 = no)
