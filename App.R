@@ -38,12 +38,12 @@ ui <-dashboardPage(title="Pharmaco",
                     introBox( 
                      uiOutput(outputId = "reg"),
                      data.step = 3,
-                     data.intro = "Use these checkboxes to select the regions"
+                     data.intro = "Use these checkboxes to segment the data by region"
                     ),
                     introBox(
                      downloadButton('downloadData', 'Download'),
                      data.step = 4,
-                     data.intro = "Click here to download a csv of all the data. This will be limited to your selections form before."
+                     data.intro = "Click here to download a csv of all the data. This will be limited to your previous segmentations."
                    )
                 ),
                    dashboardBody(introjsUI(),

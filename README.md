@@ -1,3 +1,4 @@
-# Pharmaco
+![alt text](/pharmaco.jpg)
 
-![alt text](/pin.png)
+
+# The Project
