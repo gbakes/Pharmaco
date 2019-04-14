@@ -70,7 +70,7 @@ ui <-dashboardPage(title="Pharmaco",
                                      width = 3,
                                      descriptionBlock(
                                        header = textOutput("act"), 
-                                       text = "Total Commitments", 
+                                       text = "Total ToDos", 
                                        right_border = T,
                                        margin_bottom = F
                                      )
@@ -95,7 +95,7 @@ ui <-dashboardPage(title="Pharmaco",
                                    )),data.step = 5,
                                    data.intro = paste0("Here are some quick stats, the values are dynamic and update based off your program and region selection:", 
                                                        tags$p(tags$b("Overall Compliance"), "shows the average compliance of all employees over all the training experience."),
-                                                       tags$p(tags$b("Total Commitments"), "is the sum of all actions created."),
+                                                       tags$p(tags$b("Total Commitments"), "is the sum of all ToDos created."),
                                                        tags$p(tags$b("NPS"), " is the collective NPS calculated as described ",
                                                               tags$a(href="https://customergauge.com/blog/how-to-calculate-the-net-promoter-score/", target = "blank", " here"), "for the training."),
                                                        tags$p(tags$b("Average content"), " rating is the average content rating out of 5 of all the content material covered during the training engagement.")
@@ -166,7 +166,7 @@ server <- function(input, output, session) {
   stage3 <- as.numeric(format(runif(4000, min=50, max=100),digits=1))
   stage4 <- as.numeric(format(runif(4000, min=40, max=100),digits=1))
   stage5 <- as.numeric(format(runif(4000, min=30, max=100),digits=1))
-  Workshop <- as.Date(rep(c('2018-01-01',
+  Training <- as.Date(rep(c('2018-01-01',
                             '2018-02-01',
                             '2018-03-01',
                             '2018-04-01',
@@ -179,13 +179,13 @@ server <- function(input, output, session) {
                             '2018-11-01',
                             '2018-12-01'
   ),5000))
-  Workshop <- sample(Workshop,4000)
+  Training <- sample(Training,4000)
   nps <- as.numeric(format(runif(4000, min=1, max=10),digits=1))
-  action <- as.numeric(format(runif(4000, min=0, max=1),digits=0))
-  strategy <- rep(c(rep("Leading<br>Self",12),rep("Developing<br>Others",10),rep("Driving<br>Change",8),rep("Engaging<br>Teams",6),rep("Top Line<br>Growth",4)),100)
+  ToDo <- as.numeric(format(runif(4000, min=0, max=1),digits=0))
+  Goal <- rep(c(rep("Leading<br>Self",12),rep("Developing<br>Others",10),rep("Driving<br>Change",8),rep("Engaging<br>Teams",6),rep("Top Line<br>Growth",4)),100)
   rating <- as.numeric(format(runif(4000, min=1, max=5),digits=1))
   
-  dataset <- tibble(id,program,region,stage1,stage2,stage3,stage4,stage5,Workshop,nps,action,strategy,rating)
+  dataset <- tibble(id,program,region,stage1,stage2,stage3,stage4,stage5,Training,nps,ToDo,Goal,rating)
   
   
   countries <- read_csv("countries.csv")
@@ -292,10 +292,10 @@ server <- function(input, output, session) {
   })
   output$trained <- renderPlotly({ 
     train <- df() %>% 
-      group_by(Workshop) %>% 
-      count(Workshop) %>% 
+      group_by(Training) %>% 
+      count(Training) %>% 
       as.data.frame() %>% 
-      ggplot(aes(Workshop, n)) +
+      ggplot(aes(Training, n)) +
       
       geom_path(color = "#d90916") +
       expand_limits(x = as.Date(c("2018-01-01", "2019-06-01"))) +
@@ -332,18 +332,19 @@ server <- function(input, output, session) {
             plot.background = element_rect(fill = "#E9EEF4"))
     
     ggplotly(completion, tooltip = c("x","y")) %>% 
-      layout(title = "Completion",
-             xaxis = list(title = "")) 
+      layout(title = "Completion vs Stage",
+             xaxis = list(title = ""),
+             yaxis = list(title = "")) 
     
   })
   
   output$strategies <- renderPlotly({
     
     strategies <- df() %>% 
-      filter(action == 1) %>% 
-      select(strategy) %>% 
-      count(strategy) %>% 
-      ggplot(aes(x = reorder(strategy,n),y = n))+
+      filter(ToDo == 1) %>% 
+      select(Goal) %>% 
+      count(Goal) %>% 
+      ggplot(aes(x = reorder(Goal,n),y = n))+
       geom_bar(stat="identity", width = 0.3, fill = "#d90916") +
       geom_path()+
       #scale_y_continuous(limits = c(0,100)) + 
@@ -355,7 +356,7 @@ server <- function(input, output, session) {
             plot.background = element_rect(fill = "#E9EEF4"))
     
     ggplotly(strategies,tooltip = c("y")) %>% 
-      layout(title = "Action Strategies",
+      layout(title = "ToDo vs Training Goals",
              xaxis = list(title = ""),
              yaxis = list(title = ""))
     
@@ -371,8 +372,8 @@ server <- function(input, output, session) {
   
   output$act <- renderText({
     a <-  df()%>% 
-      select(action) %>% 
-      summarize(total = sum(action))
+      select(ToDo) %>% 
+      summarize(total = sum(ToDo))
     paste0(a)
   })
   
@@ -401,7 +402,7 @@ server <- function(input, output, session) {
   }
   output$ziptable <- DT::renderDataTable({
     df() %>% 
-      mutate(strategy = tagScrub(strategy)) %>% 
+      mutate(Goal = tagScrub(Goal)) %>% 
       select(-latitude,-longitude,-code)
   })
   
@@ -411,7 +412,7 @@ server <- function(input, output, session) {
     },
     content = function(file) {
       write.csv(df()%>% 
-                  mutate(strategy = tagScrub(strategy)), file)
+                  mutate(Goal = tagScrub(Goal)), file)
     }
   )
   
@@ -433,14 +434,14 @@ server <- function(input, output, session) {
                 population = n(),
                 nps = format(round(mean(nps), 2), nsmall = 2),
                 rating = format(round(mean(rating), 2), nsmall = 2),
-                action = sum(action)) 
+                ToDo = sum(ToDo)) 
     leaflet(map) %>%
       addTiles(attribution = '') %>% 
       addMarkers(~longitude, ~latitude,popup = paste("Country: ",map$country,"<br>",
                                                      "People: ", map$population ,"<br>",
                                                      "NPS: ", map$nps ,"<br>",
                                                      "Rating: ", map$rating ,"<br>",
-                                                     "Action: ", map$action
+                                                     "ToDo: ", map$ToDo
                                                   
       ),
       
