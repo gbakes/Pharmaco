@@ -28,12 +28,12 @@ ui <-dashboardPage(title="Pharmaco",
                                  menuItem("Data", tabName = "stage1", icon = icon("cart-arrow-down"))
                      ),
                      data.step = 1,
-                     data.intro = textOutput("datastep1")
+                     data.intro = "Toggle between the dashboard overview page and the raw data from these two tabs"
                      ),
                     introBox( 
                      uiOutput(outputId = "prog"),
                      data.step = 2,
-                     data.intro = "Use this dropdown to select Programs"
+                     data.intro = "Use this dropdown to segment the data by Program"
                     ),
                     introBox( 
                      uiOutput(outputId = "reg"),
@@ -61,7 +61,7 @@ ui <-dashboardPage(title="Pharmaco",
                                      width = 3,
                                      descriptionBlock(
                                        header =  textOutput("avComp"), 
-                                       text = "Overall Completion", 
+                                       text = "Overall Compliance", 
                                        right_border = TRUE,
                                        margin_bottom = FALSE
                                      )
@@ -70,7 +70,7 @@ ui <-dashboardPage(title="Pharmaco",
                                      width = 3,
                                      descriptionBlock(
                                        header = textOutput("act"), 
-                                       text = "Total actions", 
+                                       text = "Total Commitments", 
                                        right_border = T,
                                        margin_bottom = F
                                      )
@@ -94,11 +94,11 @@ ui <-dashboardPage(title="Pharmaco",
                                      
                                    )),data.step = 5,
                                    data.intro = paste0("Here are some quick stats, the values are dynamic and update based off your program and region selection:", 
-                                                       tags$p(tags$b("Overall completion"), "shows the average completion of all participants over all the stages."),
-                                                       tags$p(tags$b("Total actions"), "is the sum of all actions created."),
+                                                       tags$p(tags$b("Overall Compliance"), "shows the average compliance of all employees over all the training experience."),
+                                                       tags$p(tags$b("Total Commitments"), "is the sum of all actions created."),
                                                        tags$p(tags$b("NPS"), " is the collective NPS calculated as described ",
-                                                              tags$a(href="https://customergauge.com/blog/how-to-calculate-the-net-promoter-score/", target = "blank", " here.")),
-                                                       tags$p(tags$b("Average content"), " rating is the average content rating out of 5 of all the contents available.")
+                                                              tags$a(href="https://customergauge.com/blog/how-to-calculate-the-net-promoter-score/", target = "blank", " here"), "for the training."),
+                                                       tags$p(tags$b("Average content"), " rating is the average content rating out of 5 of all the content material covered during the training engagement.")
                                                        
                                    )
                                  ),
@@ -108,12 +108,12 @@ ui <-dashboardPage(title="Pharmaco",
                                        column(width = 6, introBox(
                                          leafletOutput("leaflet_map"),
                                          data.step = 6,
-                                         data.intro = "Here's a map showing all the places where workshops took place. Click on the aesthetically pleasing and beautifully branded circles to bring up key stats. The values are dynamic and update based off your program and region selection."
+                                         data.intro = "Here's a map showing all the places where the training sessions took place. Click on the map markers to bring up key stats. The values are dynamic and update based off your program and region selection."
                                        
                                        )),
-                                       column(width = 6,introBox(
+                                       column(width = 6,introBox(fluidRow(
                                          column(width = 10,plotlyOutput("trained")),
-                                         column(width = 2,uiOutput(outputId = "projections")),
+                                         column(width = 2,uiOutput(outputId = "projections"))),
                                          data.step = 7,
                                          data.intro = "The values are dynamic and update based off your program and region selection.")
                                        )
@@ -155,21 +155,6 @@ load_data <- function() {
 }
 
 server <- function(input, output, session) {
-  
-  x <- read_xlsx("introJS.xlsx")
-  for(i in 1:length(x$datasteps)){
-    nam <- paste("data.step", i, sep = "")
-    assign(nam, x[i,])
-  }
-  
-  output$datastep1 <- renderPrint({data.step1$datasteps})
-  output$data.step2 <- renderText(data.step2)
-  output$data.step3 <- renderText(data.step3)
-  output$data.step4 <- renderText(data.step4)
-  output$data.step5 <- renderText(data.step5)
-  output$data.step6 <- renderText(data.step6)
-  
- 
   
   set.seed(123)
   id <- seq(333,4332,1)
