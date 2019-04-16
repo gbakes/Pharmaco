@@ -19,8 +19,7 @@ library(NPS)
 ui <-dashboardPage(title="Pharmaco",
                    dashboardHeaderPlus(title = span(img(src="logo.png", height = "30px"), "Pharmaco"),
                                        tags$li(actionLink("help", label = "", icon = icon("question")),
-                                               class = "dropdown")
-                                   ),
+                                               class = "dropdown")),
                    dashboardSidebar( 
                      introBox( 
                      sidebarMenu(id = "tabs",
@@ -115,36 +114,32 @@ ui <-dashboardPage(title="Pharmaco",
                                          column(width = 10,plotlyOutput("trained")),
                                          column(width = 2,uiOutput(outputId = "projections"))),
                                          data.step = 7,
-                                         data.intro = "The values are dynamic and update based off your program and region selection.")
+                                         data.intro = "This graph shows the employees trained over time. It can be segmented by the Program and Region selections made from the sidebar. The projection shows the estimated employees trained in 6 months.")
                                        )
                                    )
                                  ),
                                  fluidRow(
                                    box(width = 12, 
-                                       column(width = 6,
-                                              plotlyOutput("completion")
-                                       ),
-                                       column(width = 6,
-                                              plotlyOutput("strategies")
-                                       )
-                                       
-                                       
-                                       
+                                       column(width = 6,introBox( 
+                                              plotlyOutput("completion"),
+                                              data.step = 8,
+                                              data.intro = "This graph shows the amount of content employees have completed over each stage"
+                                              
+                                       )),
+                                       column(width = 6,introBox( 
+                                              plotlyOutput("strategies"),
+                                              data.step = 9,
+                                              data.intro = "This graah shows the amount of ToDos created aligned to each to each overarching goal of the training enagagement"
+                                              
+                                       ))
                                    )
                                  )
                          ),
-                         tabItem(tabName = "stage1", 
-                                 
-                                 fluidRow(
-                                   DT::dataTableOutput("ziptable")
-                                 )
+                         tabItem(tabName = "stage1",
+                                 fluidRow(DT::dataTableOutput("ziptable"))
                          )
                        )
                      )
-                     
-                     
-                     
-                     
                    )
 )
 
@@ -188,7 +183,7 @@ server <- function(input, output, session) {
   dataset <- tibble(id,program,region,stage1,stage2,stage3,stage4,stage5,Training,nps,ToDo,Goal,rating)
   
   
-  countries <- read_csv("countries.csv")
+  countries <- read_csv("data/countries.csv")
   colnames(countries)[colnames(countries)=="en"] <- "country"
   
   Asia <- countries %>% 
@@ -417,7 +412,7 @@ server <- function(input, output, session) {
   )
   
   greenLeafIcon <- makeIcon(
-    iconUrl = "pin.png",
+    iconUrl = "www/pin.png",
     iconWidth = 15, iconHeight = 15,
     iconAnchorX = 0, iconAnchorY = 0,
     shadowWidth = 10, shadowHeight = 10,
