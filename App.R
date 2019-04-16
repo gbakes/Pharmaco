@@ -151,6 +151,8 @@ load_data <- function() {
 
 server <- function(input, output, session) {
   
+  seq(Sys.Date(), length = 6, by = "-1 months")
+  
   set.seed(123)
   id <- seq(333,4332,1)
   program <- paste(rep("Program",4000), rep(seq(1:6),666))
@@ -161,19 +163,7 @@ server <- function(input, output, session) {
   stage3 <- as.numeric(format(runif(4000, min=50, max=100),digits=1))
   stage4 <- as.numeric(format(runif(4000, min=40, max=100),digits=1))
   stage5 <- as.numeric(format(runif(4000, min=30, max=100),digits=1))
-  Training <- as.Date(rep(c('2018-01-01',
-                            '2018-02-01',
-                            '2018-03-01',
-                            '2018-04-01',
-                            '2018-05-01',
-                            '2018-06-01',
-                            '2018-07-01',
-                            '2018-08-01',
-                            '2018-09-01',
-                            '2018-10-01',
-                            '2018-11-01',
-                            '2018-12-01'
-  ),5000))
+  Training <- as.Date(rep(seq(Sys.Date(), length = 12, by = "-1 months"),5000))
   Training <- sample(Training,4000)
   nps <- as.numeric(format(runif(4000, min=1, max=10),digits=1))
   ToDo <- as.numeric(format(runif(4000, min=0, max=1),digits=0))
@@ -285,6 +275,8 @@ server <- function(input, output, session) {
       filter(dataset, program %in%(input$prog) & region %in% c(input$reg))
     }
   })
+  
+  
   output$trained <- renderPlotly({ 
     train <- df() %>% 
       group_by(Training) %>% 
@@ -293,7 +285,7 @@ server <- function(input, output, session) {
       ggplot(aes(Training, n)) +
       
       geom_path(color = "#d90916") +
-      expand_limits(x = as.Date(c("2018-01-01", "2019-06-01"))) +
+      expand_limits(x = as.Date(seq(Sys.Date(), length = 2, by = "6 months"))) +
       stat_smooth(method = input$projections, fullrange = T) +
     
       theme_ipsum() +
