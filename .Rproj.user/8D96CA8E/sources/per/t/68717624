@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1555273445875.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2985216237",
+    "id" : "68717624",
+    "lastKnownWriteTime" : 1555432456,
+    "last_content_update" : 1555432456097,
+    "path" : "~/Documents/Porto/Pharmaco/Pharmaco/App.R",
+    "project_path" : "App.R",
+    "properties" : {
+        "cursorPosition" : "9,15",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
